@@ -8,4 +8,4 @@ for n, x in enumerate(os.listdir(TARGET_PATH)):
     rx = x.replace(r' ', r'\ ')
     fileName = rx.split('.')[0]
     os.system('jupyter-nbconvert --to html ' + TARGET_PATH + rx)
-    os.system('mv ' + fileName + '.html' + ' ./html/' + fileName + '.html')
+    os.system('mv ./jupyters/' + fileName + '.html' + ' ./html/' + fileName + '.html')
