@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>Laughing-Umbrella</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function searchTable() {
+            var tb, tr, checked, searchTerms, i, j;
+            tb = document.getElementById("content");
+            tr = tb.getElementsByTagName("tr");
+            searchTerms = ["Algorithm", "Statistics", "Physics"];
+            checked = new Array(searchTerms.length);
+            // Find checkbox is checked or not.
+            for (i=0; i<searchTerms.length; i++) {
+                checked[i] = document.getElementById(searchTerms[i]).checked;
+            }
+
+            for (i=1; i<tr.length; i++) {
+                // Let row i hidden
+                tr[i].style.display = "none";
+                // Get tag of row i
+                td = tr[i].getElementsByTagName("td")[1];
+                content = td.innerHTML;
+                // Loop for every checkbox
+                for (j=0; j<searchTerms.length; j++) {
+                    if (!checked[j]) {
+                        continue;
+                    }
+                    if ( content.indexOf(searchTerms[j]) > -1 ) {
+                        tr[i].style.display = "";
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Table of Contents</h1>
+    <!-- Search Table -->
+    <table>
+        <tr>
+            <th colspan="2">Tag Filter</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="Algorithm" onclick="searchTable()" checked>Algorithm</td>
+            <td><input type="checkbox" id="Statistics" onclick="searchTable()" checked>Statistics</td>
+            <td><input type="checkbox" id="Physics" onclick="searchTable()" checked>Physics</td>
+        </tr>
+    </table>
+    <p></p>
+    <!-- Content Table -->
+    <table id="content">
+        <tr>
+            <th>Title</th>
+            <th>Tag</th>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="html/Newton method.html">Newton's method</a></td>
+            <td>Algorithm</td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="html/Rotation.html">Rotation</a></td>
+            <td>Physics</td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="html/Transverse waves.html">Transverse waves</a></td>
+            <td>Physics</td>
+        </tr>
+    </table>
+</body>
+</html>
