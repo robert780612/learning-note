@@ -14,7 +14,7 @@
             var tb, tr, checked, searchTerms, i, j;
             tb = document.getElementById("content");
             tr = tb.getElementsByTagName("tr");
-            searchTerms = ["Algorithm", "Statistics", "Physics"];
+            searchTerms = ["Algorithm", "Statistics", "Physics", "ML", "DL"];
             checked = new Array(searchTerms.length);
             // Find checkbox is checked or not.
             for (i=0; i<searchTerms.length; i++) {
@@ -47,20 +47,22 @@
     <!-- Search Table -->
     <table>
         <tr>
-            <th colspan="3">Tag Filter</th>
+            <th colspan="5">Tag Filter</th>
         </tr>
         <tr>
             <td><input type="checkbox" id="Algorithm" onclick="searchTable()" checked>Algorithm</td>
             <td><input type="checkbox" id="Statistics" onclick="searchTable()" checked>Statistics</td>
             <td><input type="checkbox" id="Physics" onclick="searchTable()" checked>Physics</td>
+            <td><input type="checkbox" id="ML" onclick="searchTable()" checked>ML</td>
+            <td><input type="checkbox" id="DL" onclick="searchTable()" checked>DL</td>
         </tr>
     </table>
     <p></p>
     <!-- Content Table -->
-    <table id="content">
+    <table id="content" width="400">
         <tr>
-            <th>Title</th>
-            <th>Tag</th>
+            <th width="200">Title</th>
+            <th width="200">Tag</th>
         </tr>
         <tr>
             <td><a target="_blank" href="./html/Newton method.html">Newton's method</a></td>
@@ -78,6 +80,27 @@
             <td><a target="_blank" href="./html/Entropy.html">Entropy</a></td>
             <td>Physics,Statistics</td>
         </tr>
+        <tr>
+            <td><a target="_blank" href="./html/Entropy.html">Bagging</a></td>
+            <td>ML</td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="./html/Entropy.html">Boosting</a></td>
+            <td>ML</td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="./html/Entropy.html">Random forest</a></td>
+            <td>ML</td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="./html/Entropy.html">Faster RCNN</a></td>
+            <td>DL</td>
+        </tr>
     </table>
 </body>
 </html>
+
+
+
+
+
