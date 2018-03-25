@@ -1,11 +1,23 @@
 
 import os
+import time
+from os.path import join as pjoin
 
-TARGET_PATH = './jupyters/'
-for n, x in enumerate(os.listdir(TARGET_PATH)):
-    if x.split('.')[1] != 'ipynb':
+jupyter_dir = './jupyters/'
+html_dir = './html/'
+for n, ipy_fname in enumerate(os.listdir(jupyter_dir)):
+    if ipy_fname.split('.')[1] != 'ipynb':
         continue
-    rx = x.replace(r' ', r'\ ')
-    fileName = rx.split('.')[0]
-    os.system('jupyter-nbconvert --to html ' + TARGET_PATH + rx)
-    os.system('mv ./jupyters/' + fileName + '.html' + ' ./html/' + fileName + '.html')
+    file_no_ext = ipy_fname.split('.')[0]
+    
+    # Check modification time
+    source_ipynb_path = pjoin(jupyter_dir, '{}'.format(ipy_fname))
+    source_html_path = pjoin(jupyter_dir, '{}.html'.format(file_no_ext))
+    target_html_path = pjoin(html_dir, '{}.html'.format(file_no_ext))
+    if (os.path.isfile(target_html_path) and 
+        os.stat(source_ipynb_path).st_mtime < os.stat(target_html_path).st_mtime):
+        print('"{}" no update'.format(ipy_fname))
+        continue # html is newer than ipynb
+    print('Renew "{}"'.format(ipy_fname))
+    os.system('jupyter-nbconvert --to html "{}"'.format(pjoin(jupyter_dir, file_no_ext)))
+    os.system('mv "{}" "{}"'.format(source_html_path, target_html_path))
