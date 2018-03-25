@@ -10,13 +10,30 @@
         }
     </style>
     <script>
+        var searchTerms
+        searchTerms = ["Algorithm", "Statistics", "Physics", "MachineLearning", 
+                       "DeepLearning", "Python", "Tensorflow", "Mathematics"];
+        
+        function selectAll() {
+            for (i=0; i<searchTerms.length; i++) {
+                document.getElementById(searchTerms[i]).checked = true;
+            }
+            searchTable()
+        }
+        
+        function clearAll() {
+            for (i=0; i<searchTerms.length; i++) {
+                document.getElementById(searchTerms[i]).checked = false;
+            }
+            searchTable()
+        }
+        
         function searchTable() {
-            var tb, tr, checked, searchTerms, i, j;
+            var tb, tr, checked, i, j;
             tb = document.getElementById("content");
             tr = tb.getElementsByTagName("tr");
-            searchTerms = ["Algorithm", "Statistics", "Physics", "ML", "DL"];
             checked = new Array(searchTerms.length);
-            // Find checkbox is checked or not.
+            // Record i-th checkbox is checked or not.
             for (i=0; i<searchTerms.length; i++) {
                 checked[i] = document.getElementById(searchTerms[i]).checked;
             }
@@ -28,22 +45,31 @@
                 td = tr[i].getElementsByTagName("td")[1];
                 content = td.innerHTML;
                 // Loop for every checkbox
+                // if there is any checkbox is selected
+                // then display row i
                 for (j=0; j<searchTerms.length; j++) {
                     if (!checked[j]) {
-                        continue;
+                        continue; // term j is unckecked
                     }
+                    // if there is no term in the content of row i 
+                    // --> indexOf(searchTerm) == -1 (skip)
+                    // if there is term in the content of row i
+                    // --> return the beginning index of term (of course > -1)
+                    // --> enter the if statement, display row i
                     if ( content.indexOf(searchTerms[j]) > -1 ) {
                         tr[i].style.display = "";
                         break;
                     }
-                }
-            }
+                } // end for j
+            } // end for i
         }
     </script>
 </head>
 
 <body>
     <h1>Table of Contents</h1>
+    <button type="button" onclick="selectAll()">Select all!</button>
+    <button type="button" onclick="clearAll()">Clear all!</button>
     <!-- Search Table -->
     <table>
         <tr>
@@ -53,15 +79,20 @@
             <td><input type="checkbox" id="Algorithm" onclick="searchTable()" checked>Algorithm</td>
             <td><input type="checkbox" id="Statistics" onclick="searchTable()" checked>Statistics</td>
             <td><input type="checkbox" id="Physics" onclick="searchTable()" checked>Physics</td>
-            <td><input type="checkbox" id="ML" onclick="searchTable()" checked>ML</td>
-            <td><input type="checkbox" id="DL" onclick="searchTable()" checked>DL</td>
+            <td><input type="checkbox" id="MachineLearning" onclick="searchTable()" checked>MachineLearning</td>
+            <td><input type="checkbox" id="DeepLearning" onclick="searchTable()" checked>DeepLearning</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="Python" onclick="searchTable()" checked>Python</td>
+            <td><input type="checkbox" id="Tensorflow" onclick="searchTable()" checked>Tensorflow</td>
+            <td><input type="checkbox" id="Mathematics" onclick="searchTable()" checked>Mathematics</td>
         </tr>
     </table>
     <p></p>
     <!-- Content Table -->
-    <table id="content" width="400">
+    <table id="content" width="600">
         <tr>
-            <th width="200">Title</th>
+            <th width="400">Title</th>
             <th width="200">Tag</th>
         </tr>
         <tr>
@@ -81,20 +112,24 @@
             <td>Physics,Statistics</td>
         </tr>
         <tr>
-            <td><a target="_blank" href="./html/Entropy.html">Bagging</a></td>
-            <td>ML</td>
+            <td><a target="_blank" href="./html/File modification time.html">File modification time</a></td>
+            <td>Python</td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="./html/Tensorflow Graph and GraphDef.html">Tensorflow Graph and GraphDef</a></td>
+            <td>Tensorflow</td>
         </tr>
         <tr>
             <td><a target="_blank" href="./html/Entropy.html">Boosting</a></td>
-            <td>ML</td>
+            <td>MachineLearning</td>
         </tr>
         <tr>
             <td><a target="_blank" href="./html/Entropy.html">Random forest</a></td>
-            <td>ML</td>
+            <td>MachineLearning</td>
         </tr>
         <tr>
             <td><a target="_blank" href="./html/Entropy.html">Faster RCNN</a></td>
-            <td>DL</td>
+            <td>DeepLearning</td>
         </tr>
     </table>
 </body>
