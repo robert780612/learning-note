@@ -4,7 +4,10 @@ import sys
 import time
 from os.path import join as pjoin
 
-convert_all = sys.argv[1] == 'all'
+if len(sys.argv)>1:
+    convert_all = sys.argv[1] == 'all'
+else:
+    convert_all = False
 
 jupyter_dir = './jupyters/'
 html_dir = './html/'

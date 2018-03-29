@@ -11792,8 +11792,8 @@ div#notebook {
 <li><a href="#Entropy">Entropy</a></li>
 <li><a href="#Conditional-entropy">Conditional entropy</a></li>
 <li><a href="#Mutual-information">Mutual information</a></li>
-<li><a href="#Relative-entropy">Relative entropy</a> (KL divergence (Kullback-Leibler))</li>
-<li>Cross entropy</li>
+<li><a href="#Cross-entropy">Cross entropy</a></li>
+<li><a href="#Relative-entropy-(KL-divergence)">Relative entropy</a> (KL divergence (Kullback-Leibler))</li>
 </ul>
 
 </div>
@@ -12227,6 +12227,29 @@ I(X,Y)&amp;=P(X=0,Y=0)\log_2 \frac{P(X=0,Y=0)}{P(X=0)P(Y=0)}\\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Cross-entropy">Cross entropy<a class="anchor-link" href="#Cross-entropy">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>P &amp; Q are two discrete probability distribution</p>
+<p>$$\begin{align}
+H(P,Q)&amp;=E_P[-\log Q]\\
+      &amp;=-\sum_i P(i) \log Q(i)\\
+      &amp;=-\sum_i P(i) \log \frac{Q(i)}{P(i)} - \sum_i P(i) \log P(i)\\
+      &amp;=D_{KL}(P||Q) + H(P)
+\end{align}$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Relative-entropy-(KL-divergence)">Relative entropy (KL divergence)<a class="anchor-link" href="#Relative-entropy-(KL-divergence)">&#182;</a></h1>
 </div>
 </div>
@@ -12236,7 +12259,17 @@ I(X,Y)&amp;=P(X=0,Y=0)\log_2 \frac{P(X=0,Y=0)}{P(X=0)P(Y=0)}\\
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>P &amp; Q are two discrete probability distribution
-$$D_{KL}(P||Q)=-\sum_i P(i)\log \frac{Q(i)}{P(i)}$$</p>
+$$
+\begin{align}
+D_{KL}(P||Q)&amp;=-\sum_i P(i)\log \frac{Q(i)}{P(i)}\\
+            &amp;=-\sum_i P(i)\log Q(i) + \sum_i P(i)\log P(i)
+\end{align}$$</p>
+<ul>
+<li><p>If P &amp; Q are identical distribution almost everywhere, $D_{KL}(P||Q)=0$</p>
+</li>
+<li><p>$D_{KL}(P||Q) \ge 0$ (<a href="https://en.wikipedia.org/wiki/Gibbs%27_inequality">Gibb's inequality</a>)</p>
+</li>
+</ul>
 
 </div>
 </div>
@@ -12245,15 +12278,7 @@ $$D_{KL}(P||Q)=-\sum_i P(i)\log \frac{Q(i)}{P(i)}$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Cross-entropy">Cross entropy<a class="anchor-link" href="#Cross-entropy">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>$$H(p,q)=E_p[-\log q]=H(p)+D_{KL}(p||q)$$</p>
+<p>If P is a known distribution (true label distribution), and $D_{KL}(P||Q) = H(P,Q) - H(P)$, minimize cross-entropy is equivalent to minimize KL divergence.</p>
 
 </div>
 </div>
@@ -12267,6 +12292,7 @@ $$D_{KL}(P||Q)=-\sum_i P(i)\log \frac{Q(i)}{P(i)}$$</p>
 <li><a href="https://en.wikipedia.org/wiki/Mutual_information">Wikipedia Entropy</a> </li>
 <li><a href="https://stats.stackexchange.com/questions/87182/what-is-the-role-of-the-logarithm-in-shannons-entropy">What is the role of the logarithm in Shannon's entropy?</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Kullback–Leibler_divergence">Kullback–Leibler divergence</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cross-entropy_method">Cross entropy method</a></li>
 </ul>
 
 </div>
