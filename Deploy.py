@@ -12,7 +12,7 @@ else:
 jupyter_dir = './jupyters/'
 html_dir = './html/'
 for n, ipy_fname in enumerate(os.listdir(jupyter_dir)):
-    if ipy_fname.split('.')[1] != 'ipynb':
+    if ipy_fname.split('.')[-1] != 'ipynb':
         continue
     file_no_ext = ipy_fname.split('.')[0]
     
