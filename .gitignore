@@ -1,4 +1,5 @@
 
 *events.out.tfevents*
 *.ipynb_checkpoints*
-*mnist/data*
+jupyters/mnist/data/FMNIST/
+jupyters/mnist/data/MNIST/
