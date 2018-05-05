@@ -2,5 +2,5 @@
 *.pyc
 *events.out.tfevents*
 *.ipynb_checkpoints*
-jupyters/mnist/data/FMNIST/
-jupyters/mnist/data/MNIST/
+jupyters/data/
+jupyters/data/
