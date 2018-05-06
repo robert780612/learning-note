@@ -2,6 +2,5 @@
 *.pyc
 *events.out.tfevents*
 *.ipynb_checkpoints*
-jupyters/data/
-jupyters/data/
+data/
 tmp/
