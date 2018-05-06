@@ -11,3 +11,4 @@ Include topic like python, deep learning, and physics...etc.
 * numpy
 * matplotlib
 * tensorflow
+* pytorch
