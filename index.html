@@ -12,7 +12,8 @@
     <script>
         var searchTerms
         searchTerms = ["Algorithm", "Statistics", "Physics", "MachineLearning", 
-                       "DeepLearning", "Python", "Tensorflow", "Mathematics"];
+                       "DeepLearning", "Python", "Tensorflow", "Mathematics", 
+                       "Pytorch"];
         
         function selectAll() {
             for (i=0; i<searchTerms.length; i++) {
@@ -86,6 +87,7 @@
             <td><input type="checkbox" id="Python" onclick="searchTable()" checked>Python</td>
             <td><input type="checkbox" id="Tensorflow" onclick="searchTable()" checked>Tensorflow</td>
             <td><input type="checkbox" id="Mathematics" onclick="searchTable()" checked>Mathematics</td>
+            <td><input type="checkbox" id="Pytorch" onclick="searchTable()" checked>Pytorch</td>
         </tr>
     </table>
     <p></p>
@@ -133,15 +135,19 @@
         </tr>
         <tr>
             <td><a target="_blank" href="./html/MNIST-CNN.html">MNIST-CNN</a></td>
-        <td>DeepLearning,Tensorflow</td>
+            <td>DeepLearning,Tensorflow</td>
         </tr>
         <tr>
             <td><a target="_blank" href="./html/MNIST-Autoencoder.html">MNIST-Autoencoder</a></td>
-        <td>DeepLearning,Tensorflow</td>
+            <td>DeepLearning,Tensorflow</td>
         </tr>
         <tr>
             <td><a target="_blank" href="./html/Tensorflow dataset.html">Tensorflow dataset</a></td>
-        <td>Tensorflow</td>
+            <td>Tensorflow</td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="./html/FMNIST-CNN.html">FMNIST-CNN</a>/td>
+            <td>Pytorch</td>
         </tr>
     </table>
 </body>
