@@ -4,3 +4,4 @@
 *.ipynb_checkpoints*
 jupyters/data/
 jupyters/data/
+tmp/
