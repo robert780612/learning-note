@@ -26,7 +26,10 @@ for n, ipy_fname in enumerate(os.listdir(jupyter_dir)):
         os.stat(source_ipynb_path).st_mtime < os.stat(target_html_path).st_mtime):
         # print('"{}" no update'.format(ipy_fname))
         continue # html is newer than ipynb
-    print('Renew "{}"'.format(ipy_fname))
+    if not os.path.isfile(target_html_path):
+        print('A new jupyter notebook "{}", please add a hyper-link in the index.html'.format(ipy_fname))
+    else:
+        print('Renew "{}"'.format(ipy_fname))
     os.system('jupyter-nbconvert --to html "{}"'.format(pjoin(jupyter_dir, file_no_ext)))
     os.system('mv "{}" "{}"'.format(source_html_path, target_html_path))
 
